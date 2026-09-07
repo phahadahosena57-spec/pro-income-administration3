@@ -1,24 +1,36 @@
-document.getElementById("loginForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+document.addEventListener("DOMContentLoaded", function () {
 
-    const email = document.getElementById("adminEmail").value.trim();
-    const password = document.getElementById("adminPassword").value.trim();
-    const message = document.getElementById("loginMessage");
+    const loginForm = document.getElementById("loginForm");
 
-    if (email === "" || password === "") {
-        message.textContent = "Please enter email and password.";
+    if (!loginForm) {
         return;
     }
 
-    // Demo login
-    if (email === "admin@proincome.com" && password === "123456") {
-        message.textContent = "Login successful!";
+    loginForm.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-        setTimeout(function() {
-            window.location.href = "index.html";
-        }, 800);
+        const email = document.getElementById("adminEmail").value.trim();
+        const password = document.getElementById("adminPassword").value.trim();
+        const message = document.getElementById("loginMessage");
 
-    } else {
-        message.textContent = "Invalid email or password.";
-    }
+        if (email === "" || password === "") {
+            message.textContent = "Please enter email and password.";
+            return;
+        }
+
+        if (email === "admin@proincome.com" && password === "123456") {
+
+            message.textContent = "Login successful!";
+
+            setTimeout(function () {
+                window.location.href = "./index.html";
+            }, 800);
+
+        } else {
+
+            message.textContent = "Invalid email or password.";
+
+        }
+    });
+
 });
